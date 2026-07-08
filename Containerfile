@@ -353,8 +353,7 @@ RUN dnf5 -y install \
         solaar \
         rclone \
         vlc \
-        krita \
-        visual-studio-code-bin
+        krita
 
 
 # Install Steam & Lutris, plus supporting packages
