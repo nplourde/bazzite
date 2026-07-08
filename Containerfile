@@ -360,7 +360,7 @@ RUN dnf5 -y install \
 COPY rpms/ /tmp/rpms/
 
 # Install the packages using dnf/rpm-ostree
-RUN rpm -ivh --nopre -y /tmp/rpms/*.rpm
+RUN rpm -ivh --nopre /tmp/rpms/*.rpm
 # Or for rpm-ostree:
 # RUN rpm-ostree install /tmp/rpms/your-package.rpm
 
