@@ -348,6 +348,15 @@ RUN --mount=type=cache,dst=/var/cache \
     sed -i 's/ --xdg-runtime=\\"${XDG_RUNTIME_DIR}\\"//g' /usr/bin/btrfs-assistant-launcher && \
     /ctx/cleanup
 
+# Install my custom packages
+RUN dnf5 -y install \
+        solaar \
+        rclone \
+        vlc \
+        krita \
+        visual-studio-code-bin
+
+
 # Install Steam & Lutris, plus supporting packages
 RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/cache/libdnf5 \
