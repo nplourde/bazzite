@@ -353,8 +353,16 @@ RUN dnf5 -y install \
         solaar \
         rclone \
         vlc \
+        qt5-qtwebkit \
         krita
 
+# Copy your local .rpm directory into the image build context
+COPY rpms/ /tmp/rpms/
+
+# Install the packages using dnf/rpm-ostree
+RUN dnf install -y /tmp/rpms/*.rpm
+# Or for rpm-ostree:
+# RUN rpm-ostree install /tmp/rpms/your-package.rpm
 
 # Install Steam & Lutris, plus supporting packages
 RUN --mount=type=cache,dst=/var/cache \
