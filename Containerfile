@@ -357,17 +357,10 @@ RUN dnf5 -y install \
         krita
 
 # Copy your local .rpm directory into the image build context
-COPY rpms/ /tmp/rpms/
+#COPY rpms/ /tmp/rpms/
 
 # Install the packages using dnf/rpm-ostree
-#RUN rm -rf /opt/paloaltonetworks && rpm -ivh --nopre --replacefiles /tmp/rpms/*.rpm
-RUN mkdir -p /tmp/gp_extract && \
-    cd /tmp/gp_extract && \
-    rpm2cpio /tmp/rpms/GlobalProtect_UI_rpm-*.rpm | cpio -idmv && \
-    cp -a usr/. /usr/ && \
-    mkdir -p /var/opt/paloaltonetworks && \
-    cp -a opt/paloaltonetworks/. /var/opt/paloaltonetworks/ && \
-    rm -rf /tmp/gp_extract
+#RUN rpm -ivh --replacefiles /tmp/rpms/*.rpm
 
 # Or for rpm-ostree:
 # RUN rpm-ostree install /tmp/rpms/your-package.rpm
