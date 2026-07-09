@@ -360,7 +360,15 @@ RUN dnf5 -y install \
 COPY rpms/ /tmp/rpms/
 
 # Install the packages using dnf/rpm-ostree
-RUN rpm -ivh --nopre /tmp/rpms/*.rpm
+#RUN rm -rf /opt/paloaltonetworks && rpm -ivh --nopre --replacefiles /tmp/rpms/*.rpm
+RUN mkdir -p /tmp/gp_extract && \
+    cd /tmp/gp_extract && \
+    rpm2cpio /tmp/rpms/GlobalProtect_UI_rpm-*.rpm | cpio -idmv && \
+    cp -a usr/. /usr/ && \
+    mkdir -p /var/opt/paloaltonetworks && \
+    cp -a opt/paloaltonetworks/. /var/opt/paloaltonetworks/ && \
+    rm -rf /tmp/gp_extract
+
 # Or for rpm-ostree:
 # RUN rpm-ostree install /tmp/rpms/your-package.rpm
 
