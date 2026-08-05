@@ -58,12 +58,6 @@ jobs:
       fail-fast: false
       matrix:
         image:
-<<<<<<< HEAD
-          #- bazzite
-          #- bazzite-gnome
-          #- bazzite-nvidia
-          #- bazzite-gnome-nvidia
-=======
           - bazzite
           - bazzite-gnome
           - bazzite-deck
@@ -72,7 +66,6 @@ jobs:
           - bazzite-deck-nvidia-gnome
           - bazzite-nvidia
           - bazzite-gnome-nvidia
->>>>>>> ublue-os/main
           - bazzite-nvidia-open
           #- bazzite-gnome-nvidia-open
         include:
